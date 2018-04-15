@@ -3,7 +3,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Ball.gd" type="Script" id=2]
 [ext_resource path="res://PlayerController.gd" type="Script" id=3]
-[ext_resource path="res://NemesisController.gd" type="Script" id=4]
+[ext_resource path="res://Nemesis.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D" index="0"]
 
@@ -85,38 +85,18 @@ build_mode = 0
 polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Nemesis" type="Sprite" parent="Playfield" index="1" groups=[
-"nemesis",
-]]
+[node name="Nemesis" parent="Playfield" index="1" instance=ExtResource( 4 )]
 
+editor/display_folded = true
 position = Vector2( 400, 200 )
-texture = ExtResource( 1 )
-flip_v = true
-script = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
-speed = Vector2( 150, 100 )
 
-[node name="Area" type="Area2D" parent="Playfield/Nemesis" index="0"]
+[node name="Nemesis2" parent="Playfield" index="2" instance=ExtResource( 4 )]
 
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Transform" ]
+position = Vector2( 500, 80 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Nemesis/Area" index="0"]
+[node name="Nemesis3" parent="Playfield" index="3" instance=ExtResource( 4 )]
 
-position = Vector2( -32, -32 )
-build_mode = 0
-polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="NemesisController" type="Node" parent="Playfield/Nemesis" index="1"]
-
-script = ExtResource( 4 )
+position = Vector2( 500, 320 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="2" groups=[
 "gameover",
