@@ -1,4 +1,4 @@
-extends Node
+extends RigidBody2D
 
 var change_size = 50
 var until_change = 0
@@ -11,4 +11,4 @@ func _process(delta):
 		var ball = get_parent()
 		var offset = Vector2(rand_range(-change_size, change_size), rand_range(change_size, change_size))
 		change_size *= 1.25
-		ball.speed += offset
+		self.linear_velocity += offset

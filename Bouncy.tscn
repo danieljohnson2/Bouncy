@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Score.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Ball.gd" type="Script" id=3]
-[ext_resource path="res://PlayerController.gd" type="Script" id=4]
-[ext_resource path="res://Nemesis.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Nemesis.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D" index="0"]
 
@@ -77,51 +76,71 @@ size_flags_vertical = 1
 color = Color( 0.310303, 0.431593, 0.640625, 1 )
 _sections_unfolded = [ "Margin", "Mouse", "Rect" ]
 
-[node name="Ball" type="Sprite" parent="Playfield" index="0" groups=[
+[node name="Ball" type="RigidBody2D" parent="Playfield" index="0" groups=[
 "player",
 ]]
 
 position = Vector2( 200, 200 )
-texture = ExtResource( 2 )
-script = ExtResource( 3 )
-_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
-speed = Vector2( 0, 0 )
-
-[node name="PlayerController" type="Node" parent="Playfield/Ball" index="0"]
-
-script = ExtResource( 4 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+mode = 0
+mass = 1.0
+friction = 0.0
+bounce = 1.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+linear_velocity = Vector2( 0, 0 )
+linear_damp = 0.0
+angular_velocity = 0.0
+angular_damp = -1.0
+script = ExtResource( 2 )
+_sections_unfolded = [ "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
 responsiveness = 250
 
-[node name="Area" type="Area2D" parent="Playfield/Ball" index="1"]
-
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Ball/Area" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Ball" index="0"]
 
 position = Vector2( -32, -32 )
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Nemesis" parent="Playfield" index="1" instance=ExtResource( 5 )]
+[node name="Sprite" type="Sprite" parent="Playfield/Ball" index="1"]
+
+texture = ExtResource( 3 )
+
+[node name="Nemesis" parent="Playfield" index="1" instance=ExtResource( 4 )]
 
 editor/display_folded = true
 position = Vector2( 400, 200 )
 
-[node name="Nemesis2" parent="Playfield" index="2" instance=ExtResource( 5 )]
+[node name="Nemesis2" parent="Playfield" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 500, 80 )
 
-[node name="Nemesis3" parent="Playfield" index="3" instance=ExtResource( 5 )]
+[node name="Nemesis3" parent="Playfield" index="3" instance=ExtResource( 4 )]
 
 position = Vector2( 500, 320 )
+
+[node name="Invisible Walls" type="KinematicBody2D" parent="Playfield" index="4"]
+
+position = Vector2( 300, 200 )
+scale = Vector2( 11, 7 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Invisible Walls" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -28, -28, -28, 28, 28, 28, 28, -28, -28, -28, -30, -30, 30, -30, 30, 30, -30, 30, -30, -30 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="3" groups=[
 "gameover",
@@ -155,6 +174,6 @@ selection_enabled = false
 override_selected_font_color = false
 _sections_unfolded = [ "BBCode", "Rect", "Visibility" ]
 
-[connection signal="area_entered" from="Playfield/Ball/Area" to="Playfield/Ball/PlayerController" method="_on_Area_area_entered"]
+[connection signal="body_entered" from="Playfield/Ball" to="Playfield/Ball" method="_on_Ball_body_entered"]
 
 
