@@ -65,7 +65,7 @@ speed = Vector2( 0, 0 )
 [node name="PlayerController" type="Node" parent="Playfield/Ball" index="0"]
 
 script = ExtResource( 3 )
-responsiveness = 100
+responsiveness = 250
 
 [node name="Area" type="Area2D" parent="Playfield/Ball" index="1"]
 
