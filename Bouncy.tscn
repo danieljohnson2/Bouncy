@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Ball.gd" type="Script" id=2]
+[ext_resource path="res://PlayerController.gd" type="Script" id=3]
 
 [node name="Root" type="Node2D" index="0"]
 
@@ -54,10 +55,96 @@ _sections_unfolded = [ "Margin", "Mouse", "Rect" ]
 
 [node name="Ball" type="Sprite" parent="Playfield" index="0"]
 
-position = Vector2( 300, 200 )
+position = Vector2( 200, 200 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-speed = Vector2( 50, 50 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+speed = Vector2( 0, 0 )
+
+[node name="PlayerController" type="Node" parent="Playfield/Ball" index="0"]
+
+script = ExtResource( 3 )
 responsiveness = 100
+
+[node name="Area" type="Area2D" parent="Playfield/Ball" index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Ball/Area" index="0"]
+
+position = Vector2( -32, -32 )
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Nemesis" type="Sprite" parent="Playfield" index="1" groups=[
+"nemesis",
+]]
+
+position = Vector2( 400, 200 )
+texture = ExtResource( 1 )
+flip_v = true
+script = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform", "Visibility" ]
+speed = Vector2( 150, 100 )
+
+[node name="Area" type="Area2D" parent="Playfield/Nemesis" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Nemesis/Area" index="0"]
+
+position = Vector2( -32, -32 )
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="2" groups=[
+"gameover",
+]]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -50.0
+margin_top = -8.0
+margin_right = 50.0
+margin_bottom = 12.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+bbcode_enabled = true
+bbcode_text = "[center][b]Game Over[/b][/center]"
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Game Over"
+scroll_active = false
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+_sections_unfolded = [ "BBCode", "Rect", "Visibility" ]
+
+[connection signal="area_entered" from="Playfield/Ball/Area" to="Playfield/Ball/PlayerController" method="_on_Area_area_entered"]
 
 
