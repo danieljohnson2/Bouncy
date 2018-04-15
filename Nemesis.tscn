@@ -3,7 +3,7 @@
 [ext_resource path="res://Nemesis.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
-[node name="Nemesis" type="RigidBody2D" groups=[
+[node name="Nemesis" type="RigidBody2D" index="0" groups=[
 "nemesis",
 ]]
 

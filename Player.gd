@@ -9,9 +9,8 @@ var directions = {
 	"ui_down": Vector2(0,1) }
 
 func _process(delta):
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
-	
+	# Handle any user inputs here.
+		
 	if Input.is_action_pressed("ui_quit"):
 		get_tree().quit()
 		
@@ -19,10 +18,11 @@ func _process(delta):
 		if Input.is_action_pressed(action):
 			self.linear_velocity += directions[action] * responsiveness * delta
 
+# Game over if we contact any 'nemisis'
+func _on_Ball_body_entered(body):
+	if body.is_in_group("nemesis"): die()
+
 func die():
 	self.visible = false
 	for go in get_tree().get_nodes_in_group("gameover"):
 		go.visible = true
-
-func _on_Ball_body_entered(body):
-	if body.is_in_group("nemesis"): die()
