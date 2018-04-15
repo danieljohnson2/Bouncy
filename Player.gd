@@ -14,6 +14,9 @@ func _process(delta):
 	if Input.is_action_pressed("ui_quit"):
 		get_tree().quit()
 		
+	if not self.visible and Input.is_action_pressed("ui_restart"):
+		get_tree().change_scene("res://Bouncy.tscn")
+		
 	for action in directions.keys():
 		if Input.is_action_pressed(action):
 			self.linear_velocity += directions[action] * responsiveness * delta

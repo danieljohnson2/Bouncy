@@ -5,7 +5,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Nemesis.tscn" type="PackedScene" id=4]
 
-[node name="Root" type="Node2D"]
+[node name="Root" type="Node2D" index="0"]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
@@ -152,9 +152,9 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -50.0
-margin_top = -8.0
+margin_top = -16.0
 margin_right = 50.0
-margin_bottom = 12.0
+margin_bottom = 51.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 mouse_filter = 0
@@ -162,12 +162,18 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 bbcode_enabled = true
-bbcode_text = "[center][b]Game Over[/b][/center]"
+bbcode_text = "[center][b]Game Over[/b][/center]
+
+[center](R)estart[/center]
+[center](Q)uit[/center]"
 visible_characters = -1
 percent_visible = 1.0
 meta_underlined = true
 tab_size = 4
-text = "Game Over"
+text = "Game Over
+
+(R)estart
+(Q)uit"
 scroll_active = false
 scroll_following = false
 selection_enabled = false
