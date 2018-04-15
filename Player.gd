@@ -1,6 +1,7 @@
 extends RigidBody2D
 
-export var responsiveness = 250
+export var acceleration = 250
+export var fast_acceleration = 750
 
 var directions = {
 	"ui_right": Vector2(1,0),
@@ -16,10 +17,14 @@ func _process(delta):
 		
 	if not self.visible and Input.is_action_pressed("ui_restart"):
 		get_tree().change_scene("res://Bouncy.tscn")
+	
+	if Input.is_action_pressed("ui_stop"):
+		self.linear_velocity /= 2
 		
 	for action in directions.keys():
+		var acc = fast_acceleration if Input.is_action_pressed("ui_fast") else acceleration
 		if Input.is_action_pressed(action):
-			self.linear_velocity += directions[action] * responsiveness * delta
+			self.linear_velocity += directions[action] * acc * delta
 
 # Game over if we contact any 'nemisis'
 func _on_Ball_body_entered(body):

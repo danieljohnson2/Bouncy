@@ -101,7 +101,8 @@ angular_velocity = 0.0
 angular_damp = -1.0
 script = ExtResource( 2 )
 _sections_unfolded = [ "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
-responsiveness = 250
+acceleration = 250
+fast_acceleration = 750
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Ball" index="0"]
 
