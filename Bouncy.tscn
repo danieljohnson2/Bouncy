@@ -130,8 +130,6 @@ position = Vector2( 500, 320 )
 
 [node name="Invisible Walls" type="KinematicBody2D" parent="Playfield" index="4"]
 
-position = Vector2( 300, 200 )
-scale = Vector2( 11, 7 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -141,7 +139,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Playfield/Invisible Walls" index="0"]
 
 build_mode = 0
-polygon = PoolVector2Array( -28, -28, -28, 28, 28, 28, 28, -28, -28, -28, -30, -30, 30, -30, 30, 30, -30, 30, -30, -30 )
+polygon = PoolVector2Array( 0, 0, 0, 400, 600, 400, 600, 0, 0, 0, -10, -10, 610, -10, 610, 410, -10, 410, -10, -10 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="3" groups=[
 "gameover",
