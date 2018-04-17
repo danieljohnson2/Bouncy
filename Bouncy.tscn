@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Score.gd" type="Script" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Ball.png" type="Texture" id=3]
 [ext_resource path="res://Nemesis.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D" index="0"]
@@ -98,9 +98,9 @@ can_sleep = true
 linear_velocity = Vector2( 0, 0 )
 linear_damp = 0.0
 angular_velocity = 0.0
-angular_damp = -1.0
+angular_damp = 1.0
 script = ExtResource( 2 )
-_sections_unfolded = [ "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
+_sections_unfolded = [ "Angular", "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
 acceleration = 250
 fast_acceleration = 750
 
@@ -108,7 +108,7 @@ fast_acceleration = 750
 
 position = Vector2( -32, -32 )
 build_mode = 0
-polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+polygon = PoolVector2Array( 0, 32, 8, 8, 32.6198, 0.118813, 56, 8, 64, 32, 56, 56, 32, 64, 8, 56 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Playfield/Ball" index="1"]

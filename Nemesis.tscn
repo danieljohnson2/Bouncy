@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Nemesis.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://EvilBall.png" type="Texture" id=2]
 
 [node name="Nemesis" type="RigidBody2D" groups=[
 "nemesis",
@@ -24,13 +24,12 @@ can_sleep = true
 linear_velocity = Vector2( 0, 0 )
 linear_damp = 0.0
 angular_velocity = 0.0
-angular_damp = -1.0
+angular_damp = 1.0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
+_sections_unfolded = [ "Angular", "Collision", "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-modulate = Color( 0.863281, 0.131516, 0.131516, 1 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -38,7 +37,7 @@ _sections_unfolded = [ "Visibility" ]
 
 position = Vector2( -32, -32 )
 build_mode = 0
-polygon = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+polygon = PoolVector2Array( 0, 32, 8, 8, 32, 0, 56, 8, 64, 32, 56, 56, 32, 64, 8, 56 )
 _sections_unfolded = [ "Transform" ]
 
 
