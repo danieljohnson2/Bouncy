@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Score.gd" type="Script" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Ball.png" type="Texture" id=3]
 [ext_resource path="res://Nemesis.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Obstacle.tscn" type="PackedScene" id=5]
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
@@ -55,31 +56,30 @@ lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 1 )
 
-[node name="Playfield" type="ColorRect" parent="." index="2" groups=[
+[node name="Playfield" type="Polygon2D" parent="." index="2" groups=[
 "playfield",
 ]]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -300.0
-margin_top = -200.0
-margin_right = 300.0
-margin_bottom = 200.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
+position = Vector2( -300, -200 )
+polygon = PoolVector2Array( 0, 0, 600, 0, 600, 400, 0, 400 )
+uv = PoolVector2Array(  )
 color = Color( 0.310303, 0.431593, 0.640625, 1 )
-_sections_unfolded = [ "Margin", "Mouse", "Rect" ]
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Margin", "Mouse", "Rect", "Transform" ]
 
 [node name="Ball" type="RigidBody2D" parent="Playfield" index="0" groups=[
 "player",
 ]]
 
+editor/display_folded = true
 position = Vector2( 200, 200 )
 input_pickable = false
 collision_layer = 1
@@ -140,6 +140,30 @@ _sections_unfolded = [ "Transform" ]
 
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 0, 400, 600, 400, 600, 0, 0, 0, -10, -10, 610, -10, 610, 410, -10, 410, -10, -10 )
+
+[node name="Obstacle" parent="Playfield" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 500, 200 )
+rotation = 0.785398
+scale = Vector2( 1, 1 )
+
+[node name="Obstacle2" parent="Playfield" index="6" instance=ExtResource( 5 )]
+
+position = Vector2( 200, 80 )
+
+[node name="Obstacle3" parent="Playfield" index="7" instance=ExtResource( 5 )]
+
+position = Vector2( 200, 320 )
+
+[node name="Line2D" type="Line2D" parent="Playfield" index="8"]
+
+points = PoolVector2Array( 0, 0, 600, 0, 600, 400, 0, 400, 0, 0 )
+width = 2.0
+default_color = Color( 0.0194702, 0.0539856, 0.226562, 1 )
+texture_mode = 288680736
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Fill" ]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." index="3" groups=[
 "gameover",

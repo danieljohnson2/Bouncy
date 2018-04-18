@@ -1,0 +1,63 @@
+[gd_scene format=2]
+
+[node name="Obstacle" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform" ]
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -25.0
+margin_top = -25.0
+margin_right = 25.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 1, 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
+
+build_mode = 0
+polygon = PoolVector2Array( -25, -25, 25, -25, 25, 25, -25, 25 )
+
+[node name="Polygon2D" type="Polygon2D" parent="." index="2"]
+
+polygon = PoolVector2Array( -25, -25, 25, -25, 25, 25, -25, 25 )
+uv = PoolVector2Array(  )
+color = Color( 0.59375, 0, 1, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Invert" ]
+
+[node name="Line2D" type="Line2D" parent="." index="3"]
+
+points = PoolVector2Array( -25, -25, 25, -25, 25, 25, -25, 25, -25, -25 )
+width = 2.0
+default_color = Color( 0.0958583, 0.00250244, 0.160156, 1 )
+texture_mode = 288680736
+joint_mode = 2
+begin_cap_mode = 2
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Border", "Capping" ]
+
+
