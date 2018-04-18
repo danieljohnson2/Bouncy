@@ -7,10 +7,7 @@ path="res://.import/EvilBall.png-969508bee43708ec95b61bf91c1c68bf.stex"
 [deps]
 
 source_file="res://EvilBall.png"
-source_md5="e59c11b1ec934775f42ebd094463ec89"
-
 dest_files=[ "res://.import/EvilBall.png-969508bee43708ec95b61bf91c1c68bf.stex" ]
-dest_md5="23d35820af64f51c40348d37cb1a5e52"
 
 [params]
 

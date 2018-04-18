@@ -24,7 +24,7 @@ func _process(delta):
 	for action in directions.keys():
 		var acc = fast_acceleration if Input.is_action_pressed("ui_fast") else acceleration
 		if Input.is_action_pressed(action):
-			self.linear_velocity += directions[action] * acc * delta
+			self.apply_impulse(Vector2(), directions[action] * acc * delta)
 
 # Game over if we contact any 'nemisis'
 func _on_Ball_body_entered(body):
