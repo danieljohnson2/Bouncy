@@ -2,6 +2,7 @@ extends RigidBody2D
 
 export var acceleration = 250
 export var fast_acceleration = 750
+export (NodePath) var die_player_path
 
 var directions = {
 	"ui_right": Vector2(1,0),
@@ -30,9 +31,12 @@ func _process(delta):
 
 # Game over if we contact any 'nemisis'
 func _on_Ball_body_entered(body):
-	if body.is_in_group("nemesis"): die()
+	if body.is_in_group("nemesis"):
+		var die_player = get_node(die_player_path)
+		if not die_player.is_playing():
+			 die_player.play("Fade Out")
 
-func die():
+func game_over():
 	self.visible = false
 	for go in get_tree().get_nodes_in_group("gameover"):
 		go.visible = true
