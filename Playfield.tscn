@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="Playfield" type="Polygon2D"]
+
+editor/display_folded = true
+polygon = PoolVector2Array( 0, 0, 600, 0, 600, 400, 0, 400 )
+uv = PoolVector2Array(  )
+color = Color( 0.310303, 0.431593, 0.640625, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+_sections_unfolded = [ "Margin", "Mouse", "Rect", "Transform" ]
+
+[node name="Invisible Walls" type="KinematicBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Invisible Walls" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( 0, 0, 0, 400, 600, 400, 600, 0, 0, 0, -10, -10, 610, -10, 610, 410, -10, 410, -10, -10 )
+
+[node name="Line2D" type="Line2D" parent="." index="1"]
+
+points = PoolVector2Array( 0, 0, 600, 0, 600, 400, 0, 400, 0, 0 )
+width = 2.0
+default_color = Color( 0.0194702, 0.0539856, 0.226562, 1 )
+texture_mode = 288680736
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "Fill" ]
+
+
