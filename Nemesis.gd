@@ -15,3 +15,5 @@ func _process(delta):
 		var offset = Vector2(rand_range(-1, 1), rand_range(-1,1)) * change_size
 		self.linear_velocity += offset
 		change_size *= 1.25
+		
+	self.rotation = 0 # damping isn't always effective

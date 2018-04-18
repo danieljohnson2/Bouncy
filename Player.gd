@@ -25,6 +25,8 @@ func _process(delta):
 		var acc = fast_acceleration if Input.is_action_pressed("ui_fast") else acceleration
 		if Input.is_action_pressed(action):
 			self.apply_impulse(Vector2(), directions[action] * acc * delta)
+	
+	self.rotation = 0 # damping isn't always effective
 
 # Game over if we contact any 'nemisis'
 func _on_Ball_body_entered(body):
