@@ -137,8 +137,8 @@ angular_velocity = 0.0
 angular_damp = 1.0
 script = ExtResource( 4 )
 _sections_unfolded = [ "Angular", "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
-acceleration = 250
-fast_acceleration = 750
+acceleration = 200
+speed_factor = 3.0
 die_player_path = NodePath("Sprite/AnimationPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Ball" index="0"]
