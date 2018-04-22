@@ -39,9 +39,10 @@ func _process(delta):
 	if not self.visible and Input.is_action_pressed("ui_restart"):
 		get_tree().change_scene("res://Bouncy.tscn")
 	
-	# Stop isn't too subtle, but this works regardless of delta
+	# Stop is not instantaneous, but it slows you down fast
 	if Input.is_action_pressed("ui_stop"):
-		self.linear_velocity = Vector2(0,0)
+		var stopage = -self.linear_velocity
+		self.apply_impulse(Vector2(0,0), stopage * 20 * delta)
 	
 	var movement = get_input_direction()
 	
