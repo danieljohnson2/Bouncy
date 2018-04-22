@@ -138,6 +138,7 @@ angular_damp = 1.0
 script = ExtResource( 4 )
 _sections_unfolded = [ "Angular", "Linear", "Offset", "Pickable", "Transform", "Visibility" ]
 acceleration = 200
+stop_acceleration = 10
 speed_factor = 3.0
 die_player_path = NodePath("Sprite/AnimationPlayer")
 

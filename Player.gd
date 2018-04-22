@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export var acceleration = 200
+export var stop_acceleration = 10
 export var speed_factor = 3.0
 
 export (NodePath) var die_player_path
@@ -30,6 +31,18 @@ func get_input_direction():
 	movement = movement.normalized()
 	if Input.is_action_pressed("ui_fast"): movement *= speed_factor
 	return movement
+
+# This return vector, but limits the size of it so
+# that it won't reverse the sign of 'limit' if added
+# to it. This prevents our stopping-impulse from
+# ever overshooting a true stop, even if ramerates
+# are awful.
+func pin_by_sign(vector, limit):
+	var x = min(abs(vector.x), abs(limit.x))
+	var y = min(abs(vector.y), abs(limit.y))
+	x *= sign(vector.x)
+	y *= sign(vector.y)
+	return Vector2(x,y)
 	
 func _process(delta):
 	# Quit, Restart
@@ -41,8 +54,9 @@ func _process(delta):
 	
 	# Stop is not instantaneous, but it slows you down fast
 	if Input.is_action_pressed("ui_stop"):
-		var stopage = -self.linear_velocity
-		self.apply_impulse(Vector2(0,0), stopage * 20 * delta)
+		var stopage = -self.linear_velocity * stop_acceleration * delta
+		var limited = pin_by_sign(stopage, self.linear_velocity)
+		self.apply_impulse(Vector2(0,0), limited)
 	
 	var movement = get_input_direction()
 	
