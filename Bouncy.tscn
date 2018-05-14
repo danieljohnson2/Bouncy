@@ -10,7 +10,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "Fade Out"
-length = 1.0
+length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -20,7 +20,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
@@ -32,7 +32,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -144,9 +144,8 @@ die_player_path = NodePath("Sprite/AnimationPlayer")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Ball" index="0"]
 
-position = Vector2( -32, -32 )
 build_mode = 0
-polygon = PoolVector2Array( 0, 32, 8, 8, 32.6198, 0.118813, 56, 8, 64, 32, 56, 56, 32, 64, 8, 56 )
+polygon = PoolVector2Array( -32, 0, -24, -24, 0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Sprite" type="Sprite" parent="Node2D/Ball" index="1"]
