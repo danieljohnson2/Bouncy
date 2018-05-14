@@ -3,7 +3,7 @@
 [ext_resource path="res://Nemesis.gd" type="Script" id=1]
 [ext_resource path="res://EvilBall.png" type="Texture" id=2]
 
-[node name="Nemesis" type="RigidBody2D" groups=[
+[node name="Nemesis" type="RigidBody2D" index="0" groups=[
 "nemesis",
 ]]
 
@@ -35,9 +35,8 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="1"]
 
-position = Vector2( -32, -32 )
 build_mode = 0
-polygon = PoolVector2Array( 0, 32, 8, 8, 32, 0, 56, 8, 64, 32, 56, 56, 32, 64, 8, 56 )
+polygon = PoolVector2Array( -32, 0, -24, -24, 0, -32, 24, -24, 32, 0, 24, 24, 0, 32, -24, 24 )
 _sections_unfolded = [ "Transform" ]
 
 

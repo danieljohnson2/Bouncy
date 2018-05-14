@@ -40,7 +40,7 @@ tracks/1/keys = {
 } ]
 }
 
-[node name="Root" type="Node2D" index="0"]
+[node name="Root" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
